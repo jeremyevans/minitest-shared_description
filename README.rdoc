@@ -1,0 +1,79 @@
+= minitest-shared_description
+
+minitest-shared_description adds support for shared specs and shared spec subclasses
+to Minitest.  Minitest supports shared specs by default using plain ruby modules, but
+does not support shared spec subclasses.  In addition to making it possible to share
+subclasses, minitest-shared_desciption also provides a slightly nicer interface for
+sharing specs.
+
+= Installation
+
+  gem install minitest-shared_description
+
+= Source Code
+
+Source code is available on GitHub at https://github.com/jeremyevans/minitest-shared_description
+
+= Usage 
+
+  require 'minitest/shared_description'
+
+  SharedExamples = shared_description do
+    # You can do regular specs
+    it "should do something" do
+      # something
+    end
+
+    # You can also have spec subclasses
+    describe "nested specs" do
+      # Called inside the before/after of the class that includes SharedExamples
+      before {}
+      after {}
+
+      # Called inside the before/after of the class that includes SharedExamples
+      # and the before/after in this class
+      it "should do something else" do
+        # something
+      end
+    end
+  end
+
+  describe "something" do
+    include SharedExamples
+  end
+
+You can also have shared descriptions that are included in other shared descriptions:
+
+  SharedExample1 = shared_description do
+    describe "nested specs 1" do
+      before {}
+      after {}
+      it "should do something" do end
+    end
+  end
+
+  SharedExample2 = shared_description do
+    describe "nested specs 2" do
+      before {}
+      after {}
+      it "should do something else" do end
+    end
+  end
+
+  SharedExamples = shared_description do
+    # Include shared description in shared description block
+    include SharedExample1
+
+    describe "nested shared description use" do
+      # Include shared description in shared description class
+      include SharedExample2
+    end
+  end
+
+= License
+
+MIT
+
+= Author
+
+Jeremy Evans <code@jeremyevans.net>
