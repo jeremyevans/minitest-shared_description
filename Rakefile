@@ -12,7 +12,7 @@ end
 
 desc "Run specs"
 task :spec do
-  sh %{#{FileUtils::RUBY} -I lib -rubygems ./spec/minitest-shared_description_spec.rb}
+  sh %{#{FileUtils::RUBY} -I lib ./spec/minitest-shared_description_spec.rb}
 end
 
 task :default=>:spec
