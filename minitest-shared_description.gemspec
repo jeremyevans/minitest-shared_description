@@ -2,7 +2,6 @@ spec = Gem::Specification.new do |s|
   s.name = 'minitest-shared_description'
   s.version = '1.0.0'
   s.platform = Gem::Platform::RUBY
-  s.has_rdoc = true
   s.extra_rdoc_files = ["README.rdoc", "CHANGELOG", "MIT-LICENSE"]
   s.rdoc_options += ["--quiet", "--line-numbers", "--inline-source", '--title', 'minitest-shared_description: support for shared specs and shared spec subclasses', '--main', 'README.rdoc']
   s.license = "MIT"
