@@ -14,7 +14,7 @@ sharing specs.
 
 Source code is available on GitHub at https://github.com/jeremyevans/minitest-shared_description
 
-= Usage 
+= Usage
 
   require 'minitest/shared_description'
 
@@ -68,6 +68,15 @@ You can also have shared descriptions that are included in other shared descript
       # Include shared description in shared description class
       include SharedExample2
     end
+  end
+
+== Compatibility with minitest-rails
+
+For Rails projects that make use of the minitest-rails gem, extend
+ActiveSupport::TestCase with the TestMethods module in test_helper.rb.
+
+  class ActiveSupport::TestCase
+    extend Minitest::Spec::SharedDescription::TestMethods
   end
 
 = License
