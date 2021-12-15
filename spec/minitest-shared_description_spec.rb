@@ -24,7 +24,7 @@ describe "minitest/shared_description" do
       it("x"){@order << :x}
     end
 
-    z = describe "z" do
+    describe "z" do
       before{(@order ||= []) << :bz}
       after{@order << :az}
       it("z"){@order << :z}
@@ -59,7 +59,7 @@ describe "minitest/shared_description" do
       end
     end
 
-    z = describe "z" do
+    describe "z" do
       before{(@order = []) << :bz}
       after{@order << :az; runs << [self.class.name, @order]}
       it("z"){@order << :z}
