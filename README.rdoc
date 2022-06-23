@@ -1,5 +1,13 @@
 = minitest-shared_description
 
+Note: While this library works fine, it was only used by Sequel's tests, and it is
+not longer used by Sequel, and no longer maintained. You can probably replace what
+this library does using regular modules with `extend Minitest::Spec::DSL` (shared
+examples without spec subclasses) or `instance_exec(&shared_block)` (shared examples
+with spec subclasses).  See
+https://github.com/jeremyevans/sequel/commit/e192b52b06d62e08685d1451529f74d980ff80f6
+for an example of how to replace the use of this library.
+
 minitest-shared_description adds support for shared specs and shared spec subclasses
 to Minitest.  Minitest supports shared specs by default using plain ruby modules, but
 does not support shared spec subclasses.  In addition to making it possible to share
